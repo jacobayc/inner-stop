@@ -93,6 +93,20 @@ body.dark-mode hr {
   gap: 15px; /* 항목간 기본 간격 */
 }
 
+.main-logo {
+  width: 100%;
+  font-family: 'Lato', sans-serif; /* Or a thin, elegant font */
+  font-style: italic;
+  font-size: 3em;
+  font-weight: 500; /* Lighter font weight */
+  letter-spacing: -0.07em;
+  color: transparent !important; /* 텍스트 색상을 투명하게 만들어 배경이 보이도록 함 */
+  text-transform: uppercase;
+  background-image: linear-gradient(to right, #f5947c, #eb6c0c) !important;
+  -webkit-background-clip: text; /* 텍스트에 배경을 클리핑 */
+  background-clip: text; /* 표준 속성 */
+}
+
 .title-and-darkmode {
   display: flex;
   align-items: center; /* 제목과 다크모드 버튼을 수직 중앙 정렬 */

@@ -283,7 +283,7 @@ function App() {
   return (
     <div className="App">
       <div className="header-container">
-        <h1>INNER STOP</h1>
+        <h1 className="main-logo">INNER STOP</h1>
         <div className="title-and-darkmode">
           <h2>Reflect on your feelings today.</h2>
           <button className="dark-mode-button" onClick={() => setDarkMode(!darkMode)}>
