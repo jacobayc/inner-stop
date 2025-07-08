@@ -1,0 +1,741 @@
+/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+:root {
+  --color-bg-light: #F8F8F8;
+  --color-bg-dark: #1A1A1A;
+  --color-card-light: #FFFFFF;
+  --color-card-dark: #2C2C2C;
+  --color-text-primary-light: #333333;
+  --color-text-primary-dark: #E0E0E0;
+  --color-text-secondary-light: #666666;
+  --color-text-secondary-dark: #A0A0A0;
+  --color-accent: #6B7280; /* 주 강조색 */
+  --color-accent-light: #A0AEC0; /* 보조 강조색 */
+  --color-danger: #e74c3c; /* 삭제 버튼용 */
+
+  --border-radius: 8px;
+  --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+*:focus {
+  outline: none; /* 포커스 시 나타나는 기본 외곽선 제거 */
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+  padding: 20px; /* 기본 패딩 */
+  background-color: var(--color-bg-light);
+  color: var(--color-text-primary-light);
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: 100vh; /* 최소 높이 설정 */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 중앙 정렬 */
+  box-sizing: border-box; /* 패딩 포함 너비 계산 */
+}
+
+/* 다크 모드 */
+body.dark-mode {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-primary-dark);
+}
+
+h1, h2, h3 {
+  color: var(--color-accent);
+  margin-top: 0;
+  margin-left: 10px;
+  margin-bottom: 15px;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3 {
+  color: var(--color-accent-light);
+}
+h2 {
+  font-size: 18px !important;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--color-accent-light);
+  margin: 40px 0;
+  opacity: 0.3;
+}
+
+body.dark-mode hr {
+  border-color: #444;
+}
+
+/* 컨테이너 */
+#root {
+  width: 100%;
+  max-width: 800px; /* 최대 너비 설정 */
+  margin: 0 auto;
+  padding: 0; /* body에 패딩이 있으므로 여기는 0 */
+}
+
+/* --- 헤더 레이아웃 조정 --- */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; /* 제목과 버튼 그룹의 하단을 맞춤 */
+  margin-bottom: 20px;
+  width: 100%; /* 부모의 100% 너비 사용 */
+  flex-wrap: wrap; /* 작은 화면에서 줄바꿈 허용 */
+  gap: 15px; /* 항목간 기본 간격 */
+}
+
+.title-and-darkmode {
+  display: flex;
+  align-items: center; /* 제목과 다크모드 버튼을 수직 중앙 정렬 */
+  gap: 10px; /* 제목과 버튼 사이 간격 */
+}
+
+.action-buttons-group {
+  display: flex;
+  gap: 10px; /* 버튼들 간의 간격 */
+  flex-wrap: wrap; /* 작은 화면에서 버튼들 줄바꿈 허용 */
+}
+
+
+/* 버튼 공통 스타일 */
+button {
+  background-color: var(--color-accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 10px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  white-space: nowrap; /* 버튼 텍스트 줄바꿈 방지 */
+}
+
+button:hover {
+  background-color: #5a6372;
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(1px); /* 살짝 눌리는 느낌 */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+button.secondary {
+  background-color: var(--color-accent-light);
+}
+
+button.secondary:hover {
+  background-color: #8fa1b8;
+}
+
+button.danger {
+  background-color: var(--color-danger);
+}
+
+button.danger:hover {
+  background-color: #c0392b;
+}
+
+/* 다크 모드 버튼 개별 스타일 */
+.dark-mode-button {
+  background-color: #888; /* 조금 더 중립적인 색상 */
+  color: #fff;
+  padding: 5px 10px; /* 작게 만듦 */
+  font-size: 0.8rem; /* 폰트 크기 줄임 */
+  border-radius: 5px; /* 모서리 부드럽게 */
+}
+
+.dark-mode-button:hover {
+  background-color: #666;
+}
+
+body.dark-mode .dark-mode-button {
+  background-color: #555;
+  color: var(--color-accent-light);
+}
+
+body.dark-mode .dark-mode-button:hover {
+  background-color: #777;
+  color: var(--color-text-primary-dark);
+}
+
+
+/* 폼 스타일 */
+form {
+  background-color: var(--color-card-light);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  margin-bottom: 20px;
+}
+
+body.dark-mode form {
+  background-color: var(--color-card-dark);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column; /* 기본적으로 세로 배치 */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="range"],
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  box-sizing: border-box; /* 패딩 포함 너비 계산 */
+  background-color: var(--color-bg-light);
+  color: var(--color-text-primary-light);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group textarea,
+body.dark-mode .form-group select {
+  background-color: #3a3a3a;
+  border-color: #555;
+  color: var(--color-text-primary-dark);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(107, 114, 128, 0.2);
+}
+
+body.dark-mode .form-group input:focus,
+body.dark-mode .form-group textarea:focus,
+body.dark-mode .form-group select:focus {
+  border-color: var(--color-accent-light);
+  box-shadow: 0 0 0 2px rgba(160, 174, 192, 0.2);
+}
+
+.form-group input[type="range"] {
+  padding: 0;
+  height: 25px; /* 범위 슬라이더 높이 조정 */
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent; /* 기본 배경 제거 */
+}
+
+.form-group input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  cursor: pointer;
+  margin-top: -6px; /* 슬라이더 트랙 중앙에 오도록 조정 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .form-group input[type="range"]::-webkit-slider-thumb {
+  background: var(--color-accent-light);
+}
+
+.form-group input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 6px;
+  background: #ddd;
+  border-radius: 3px;
+}
+
+body.dark-mode .form-group input[type="range"]::-webkit-slider-runnable-track {
+  background: #555;
+}
+
+.form-group span {
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+/* 버튼 그룹 */
+form button[type="submit"],
+form button.secondary {
+  margin-right: 10px;
+}
+
+/* 마음 목록 */
+.worry-list {
+  margin-top: 20px;
+}
+
+.worry-item {
+  position: relative; /* 자식 요소의 absolute 포지셔닝을 위해 필요 */
+  background-color: var(--color-card-light);
+  border-radius: var(--border-radius);
+  padding: 20px; /* 기존 좌우하단 패딩 유지 */
+  padding-top: 20px; /* 수정: 상단 패딩을 늘려 토글 버튼 공간 확보 */
+  margin-bottom: 20px;
+  box-shadow: var(--box-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.worry-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.worry-item-action-toggle {
+    position: absolute;
+    top: 10px; /* 상단 여백 */
+    right: 10px; /* 우측 여백 */
+    background-color: var(--color-accent); /* 버튼 배경색 */
+    color: var(--color-text-primary-dark); /* 아이콘 색상 */
+    border: none;
+    border-radius: 50%; /* 원형 버튼 */
+    width: 36px; /* 버튼 크기 */
+    height: 36px; /* 버튼 크기 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 */
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    z-index: 10; /* 다른 콘텐츠 위에 표시 */
+    padding: 0; /* 내부 패딩 제거 */
+  }
+
+body.dark-mode .worry-item {
+  background-color: var(--color-card-dark);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.worry-item h3 {
+  margin-left: 0;
+  font-size: 1.0rem;
+  line-height: 16px;
+  margin-top: 0;
+  margin-bottom: 0px;
+  color: var(--color-text-primary-light);
+}
+
+body.dark-mode .worry-item h3 {
+  color: var(--color-text-primary-dark);
+}
+
+.worry-item p {
+  margin-bottom: 5px;
+}
+
+.worry-item small {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary-light);
+}
+
+body.dark-mode .worry-item small {
+  color: var(--color-text-secondary-dark);
+}
+
+.emotion-tag, .strength-tag {
+  display: inline-block;
+  background-color: var(--color-accent-light);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 4phx;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-right: 5px;
+}
+
+body.dark-mode .emotion-tag,
+body.dark-mode .strength-tag {
+  background-color: #6a768c;
+}
+
+.tags span {
+  display: inline-block;
+  background-color: #e0e0e0;
+  color: #555;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  margin-right: 8px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+body.dark-mode .tags span {
+  background-color: #4a4a4a;
+  color: var(--color-text-primary-dark);
+}
+
+.worry-actions {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+.worry-actions button {
+  padding: 8px 12px;
+  font-size: 0.9rem;
+}
+
+
+/* Filter/Search Section (Desktop/Tablet) */
+.filter-search-section,
+.data-io-section { /* 데이터 입출력 섹션에도 동일한 기본 스타일 적용 */
+  margin-top: 20px;
+  padding: 20px; /* 패딩 증가 */
+  border: 1px solid #eee;
+  border-radius: var(--border-radius);
+  background-color: var(--color-card-light);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+  margin-bottom: 20px; /* 하단 마진 추가 */
+}
+
+body.dark-mode .filter-search-section,
+body.dark-mode .data-io-section {
+  background-color: var(--color-card-dark);
+  border-color: #444;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* 필터 섹션 내의 .form-group은 기본적으로 가로 배치 (데스크톱) */
+.filter-search-section .form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-direction: row; /* 필터 그룹은 가로 배치 유지 */
+}
+
+.filter-search-section .form-group label {
+  width: 90px; /* 라벨 너비 약간 증가 */
+  flex-shrink: 0;
+  margin-bottom: 0;
+}
+
+.filter-search-section .form-group input,
+.filter-search-section .form-group select {
+  width: auto;
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.filter-search-section .filter-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+}
+
+/* 데이터 입출력 섹션 */
+.data-io-section .form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap; /* 작은 화면에서 줄바꿈 허용 */
+}
+
+.data-io-section .form-group label {
+  width: auto;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.data-io-section .form-group input[type="file"] {
+  flex-grow: 1; /* 남은 공간 차지 */
+  min-width: 150px; /* 최소 너비 설정 */
+}
+
+.worry-feedback-section {
+  margin-top: 15px;
+  border-top: 1px solid var(--color-accent-light);
+  padding-top: 15px;
+}
+
+.worry-feedback-section h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: var(--text-color-light); /* 연한 색상으로 제목 강조 */
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.feedback-textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--input-bg-color);
+  color: var(--text-color);
+  font-family: inherit;
+  font-size: 0.95em;
+  resize: vertical; /* 세로 크기 조절 가능 */
+  min-height: 50px; /* 최소 높이 */
+  box-sizing: border-box; /* 패딩, 보더 포함 너비 계산 */
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  resize: none;
+}
+
+.feedback-textarea:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 2px var(--primary-color-light);
+}
+
+/* 다크 모드 스타일 (필요시) */
+body.dark-mode .worry-feedback-section h4 {
+  color: var(--dark-text-color-light);
+}
+
+body.dark-mode .feedback-textarea {
+  background-color: var(--dark-input-bg-color);
+  border-color: var(--dark-border-color);
+  color: var(--dark-text-color);
+}
+
+body.dark-mode .feedback-textarea:focus {
+  border-color: var(--dark-primary-color);
+  box-shadow: 0 0 0 2px var(--dark-primary-color-light);
+}
+
+
+/* --- 반응형 디자인을 위한 미디어 쿼리 --- */
+@media screen and (max-width: 768px) {
+  body {
+    padding: 15px; /* 패딩 줄이기 */
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  /* 헤더 전체 컨테이너 */
+  .header-container {
+    flex-direction: column; /* 세로로 쌓기 */
+    align-items: flex-start; /* 왼쪽 정렬 */
+    gap: 15px; /* 세로 간격 추가 */
+  }
+
+  /* 제목과 다크모드 버튼 그룹 */
+  .title-and-darkmode {
+    width: 100%; /* 너비 100%로 확장 */
+    justify-content: space-between; /* 제목과 버튼 양 끝 정렬 */
+  }
+
+  /* 액션 버튼 그룹 */
+  .action-buttons-group {
+    width: 100%; /* 너비 100%로 확장 */
+    flex-wrap: wrap; /* 버튼들이 줄바꿈되도록 허용 */
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    gap: 8px; /* 버튼 간격 줄이기 */
+  }
+
+  button {
+    flex-grow: 1; /* 작은 화면에서 버튼 너비 최대한 늘리기 */
+    font-size: 0.95rem;
+    padding: 9px 12px;
+  }
+
+  /* 다크 모드 버튼은 고정 너비 */
+  .dark-mode-button {
+    flex-grow: 0; /* 늘어나지 않도록 고정 */
+    width: auto; /* 내용에 맞춰 너비 자동 조절 */
+  }
+
+
+  /* 폼 그룹 (일반 폼 공통) */
+  form .form-group { /* 일반 폼 그룹에만 적용 */
+    flex-direction: column; /* 작은 화면에서는 항상 세로 배치 */
+    align-items: flex-start; /* 왼쪽 정렬 */
+  }
+
+  form .form-group label {
+    width: auto; /* 라벨 너비 자동 조정 */
+    margin-right: 0;
+    margin-bottom: 5px; /* 라벨 아래 여백 추가 */
+  }
+
+  form .form-group input,
+  form .form-group textarea,
+  form .form-group select {
+    width: 100%; /* 입력 필드 너비 100%로 확장 */
+    margin-right: 0; /* 우측 마진 제거 */
+  }
+
+  /* --- 마음 필터링 및 검색 섹션 (모바일 2x2 구조) --- */
+  .filter-search-section {
+    padding: 15px; /* 섹션 내부 패딩 조정 */
+    display: flex; /* 섹션 자체를 Flex 컨테이너로 만듦 */
+    flex-wrap: wrap; /* 항목들이 줄바꿈되도록 허용 */
+    justify-content: space-between; /* 항목들 사이에 공간을 균등하게 배분 */
+    align-items: flex-start; /* 세로 방향으로 항목들을 시작점에 정렬 */
+  }
+
+  .filter-search-section h2 {
+    width: 100%; /* 제목이 전체 너비를 차지하도록 */
+    margin-bottom: 20px;
+    text-align: left; /* 제목은 왼쪽 정렬 유지 */
+  }
+
+  .filter-search-section .form-group {
+    flex-direction: column; /* 라벨과 입력 필드는 세로로 쌓이도록 */
+    width: calc(50% - 10px); /* 한 줄에 2개씩 배치 (20px 간격 고려) */
+    margin-bottom: 15px; /* 행과 행 사이 간격 */
+    align-items: flex-start; /* 라벨과 입력 필드를 왼쪽 정렬 */
+  }
+
+  /* 각 쌍의 첫 번째 항목 (키워드 검색, 시작 날짜)에 오른쪽 마진 적용 */
+  .filter-search-section .form-group:nth-child(2), /* 키워드 검색 (h2가 첫 번째 자식이므로 두 번째 자식) */
+  .filter-search-section .form-group:nth-child(4) { /* 시작 날짜 (h2 포함 네 번째 자식) */
+      margin-right: 20px;
+  }
+
+  /* 각 쌍의 두 번째 항목 (감정 필터링, 종료 날짜)에는 오른쪽 마진 제거 */
+  .filter-search-section .form-group:nth-child(3), /* 감정 필터링 (h2 포함 세 번째 자식) */
+  .filter-search-section .form-group:nth-child(5) { /* 종료 날짜 (h2 포함 다섯 번째 자식) */
+      margin-right: 0;
+  }
+
+  .filter-search-section .filter-buttons {
+    width: 100%; /* 필터 버튼이 전체 너비를 차지하도록 */
+    margin-top: 5px;
+  }
+
+  /* 필터 섹션 내 라벨 정렬 */
+  .filter-search-section .form-group label {
+      text-align: left; /* 라벨을 왼쪽 정렬 */
+      width: 100%; /* 라벨이 사용 가능한 너비를 모두 차지하도록 */
+      margin-bottom: 5px;
+  }
+
+  /* 필터 섹션 내 입력 필드 너비 조정 */
+  .filter-search-section .form-group input,
+  .filter-search-section .form-group select {
+      width: 100%; /* 입력 필드가 50% 너비의 컨테이너 안에서 100%를 차지하도록 */
+      box-sizing: border-box; /* 패딩을 너비 계산에 포함 */
+  }
+
+
+  /* 데이터 입출력 섹션의 폼 그룹 */
+  .data-io-section .form-group {
+    flex-direction: column; /* 데이터 입출력 섹션 폼 그룹도 세로 배치 */
+  }
+  .data-io-section .form-group label {
+    margin-right: 0;
+    margin-bottom: 5px;
+  }
+
+  /* 마음 항목 버튼 */
+  .worry-actions {
+    flex-direction: column; /* 마음 항목 내 버튼도 세로로 쌓기 */
+    gap: 8px;
+  }
+  .worry-actions button {
+    width: 100%; /* 버튼 너비 100%로 확장 */
+    padding: 10px;
+  }
+}
+
+/* 더 작은 화면 (예: iPhone SE) */
+@media screen and (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 8px 10px;
+  }
+
+  .dark-mode-button {
+    padding: 4px 8px; /* 더 작게 */
+    font-size: 0.75rem; /* 폰트도 더 작게 */
+  }
+
+  .emotion-tag, .strength-tag {
+    font-size: 0.7rem;
+    padding: 2px 6px;
+  }
+
+  .tags span {
+    font-size: 0.75rem;
+    padding: 3px 8px;
+  }
+
+  /* 더 작은 화면에서 필터링 섹션은 다시 1열로 변경 */
+  .filter-search-section .form-group {
+    width: 100%; /* 한 줄에 하나씩만 보이도록 */
+    margin-right: 0 !important; /* !important로 다른 마진 오버라이드 */
+  }
+
+  /* Worry Item Specific Styles */
+  .worry-item {
+    position: relative; /* 자식 요소의 absolute 포지셔닝을 위해 추가 */
+  }
+
+  .worry-item-action-toggle:hover {
+    background-color: var(--color-accent-light);
+    transform: scale(1.05); /* 호버 시 약간 확대 */
+  }
+
+  /* 다크 모드에서의 토글 버튼 스타일 */
+  body.dark-mode .worry-item-action-toggle {
+    background-color: #555;
+    color: var(--color-text-primary-dark);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  body.dark-mode .worry-item-action-toggle:hover {
+    background-color: #777;
+  }
+
+  /* 수정/삭제 버튼 그룹 (worry-actions) */
+  .worry-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px; /* 내용과 버튼 사이 간격 */
+    justify-content: flex-end; /* 버튼을 오른쪽으로 정렬 */
+  }
+
+  .worry-actions button {
+    padding: 8px 15px;
+    border-radius: var(--border-radius);
+    font-size: 0.9em;
+    font-weight: 500;
+  }
+}
