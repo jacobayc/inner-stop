@@ -283,9 +283,9 @@ function App() {
   return (
     <div className="App">
       <div className="header-container">
-        <h1 className="main-logo">INNER STOP</h1>
+        <h1 className="main-logo">작은 마음의 방</h1>
         <div className="title-and-darkmode">
-          <h2>Reflect on your feelings today.</h2>
+          <h2 className="title">오늘의 감정을 살며시 마주해보세요</h2>
           <button className="dark-mode-button" onClick={() => setDarkMode(!darkMode)}>
             {darkMode ? '☀️ Light' : '🌙 Dark'}
           </button>
@@ -509,7 +509,7 @@ function App() {
       <hr />
 
       <div className="worry-list">
-        <h2>Inner Records ({filteredWorries.length})</h2>
+        <h2 className="worry-title">마음의 기록 ({filteredWorries.length})</h2>
         {filteredWorries.length === 0 ? (
           <p>필터 조건에 맞는 마음이 없거나, 아직 기록된 마음이 없습니다.</p>
         ) : (

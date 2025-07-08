@@ -71,7 +71,7 @@ hr {
 }
 
 body.dark-mode hr {
-  border-color: #444;
+  border-color: #696969;
 }
 
 /* 컨테이너 */
@@ -95,9 +95,15 @@ body.dark-mode hr {
 
 .main-logo {
   width: 100%;
+  margin: 0 auto;
+  height: 50px;
+  box-shadow: 1px 1px 3px rgb(236, 226, 207);
+  border-radius: 5px;
+  /* border-bottom: 1px solid rgb(236, 226, 207); */
+  /* border-right: 1px solid rgb(236, 226, 207); */
   font-family: 'Lato', sans-serif; /* Or a thin, elegant font */
   font-style: italic;
-  font-size: 3em;
+  font-size: 2em;
   font-weight: 500; /* Lighter font weight */
   letter-spacing: -0.07em;
   color: transparent !important; /* 텍스트 색상을 투명하게 만들어 배경이 보이도록 함 */
@@ -111,6 +117,10 @@ body.dark-mode hr {
   display: flex;
   align-items: center; /* 제목과 다크모드 버튼을 수직 중앙 정렬 */
   gap: 10px; /* 제목과 버튼 사이 간격 */
+}
+
+.title {
+  letter-spacing: -1.5px;
 }
 
 .action-buttons-group {
@@ -297,6 +307,10 @@ form button.secondary {
 /* 마음 목록 */
 .worry-list {
   margin-top: 20px;
+}
+
+.worry-title {
+  letter-spacing: -1px;
 }
 
 .worry-item {
